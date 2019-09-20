@@ -40,10 +40,13 @@ describe('server.js', () => {
 
 
     it('returns a JSON TOKEN', async () => {
+      beforeEach(async () => {
+          await db('users').truncate();
+      });
       return request(server)
         .post('/api/auth/register')
         .send({
-          "username": "ben",
+          "username": "bettie",
           "password": "doesthiswork"
         })
         .set( "Content-Type","application/json")
